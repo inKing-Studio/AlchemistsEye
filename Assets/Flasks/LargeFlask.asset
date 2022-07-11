@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e573677ab484f42499975a5f3e9fd499, type: 3}
-  m_Name: SmallFlask
+  m_Name: LargeFlask
   m_EditorClassIdentifier: 
-  flaskType: 0
   imgFlask: {fileID: 0}
   imgLiquid: {fileID: 0}
-  maxLiquidQuantity: 100
+  maxLiquidQuantity: 700

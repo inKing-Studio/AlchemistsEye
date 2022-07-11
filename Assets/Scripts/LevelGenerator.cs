@@ -95,8 +95,6 @@ public class LevelGenerator : MonoBehaviour {
         }
 
         guessText.text = guessSlider.value.ToString();
-        guessSlider.transform.position = new Vector2(0, -256);
-        guessButton.transform.position = new Vector2(0, -320);
 
         int totalLiquid = 0;
 
