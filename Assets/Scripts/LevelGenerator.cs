@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using TMPro;
 
 public class LevelGenerator : MonoBehaviour {
-    public Level level; // Scriptable object que contiene los datos del nivel (numero de frascos, tipo de frasco y color del liquido de cada frasco)
     public Slider guessSlider;
     public Button guessButton;
     public TextMeshProUGUI guessText;
@@ -18,15 +17,6 @@ public class LevelGenerator : MonoBehaviour {
         guessSlider.maxValue = level.MaxSliderValue;
         guessSlider.value = AverageIntValue(level.MinSliderValue, level.MaxSliderValue);
         guessButton.interactable = true;
-        guessText.text = guessSlider.value.ToString();
-    }
-
-    void Start()
-    {        
-        // GenerateLevel();
-    }
-
-    public void OnSliderValueChanged() {
         guessText.text = guessSlider.value.ToString();
     }
     
@@ -62,34 +52,56 @@ public class LevelGenerator : MonoBehaviour {
         }
     }
 
-    public Level GenerateLevel()
+    public void OnSliderValueChanged()
     {
-        switch (level.flasks.Length)
+        guessText.text = guessSlider.value.ToString();
+    }
+
+    void Start()
+    {        
+        // GenerateLevel();
+    }
+
+    public void GenerateLevel()
+    {
+        int difLevel = PlayerPrefs.GetInt("LevelDifficulty"); // 1 - Easy, 2 - Medium, 3 - Hard
+        liquidColors = new Color[] { Color.red, Color.green, Color.blue, Color.yellow, Color.cyan, Color.magenta, Color.white, Color.black, Color.gray };
+        for(int i = 0; i < difLevel; i++)
+        {
+            flasks[i].liquidColor = liquidColors[Random.Range(0, liquidColors.Length)];
+            flasks[i].LiquidQuantity = Random.Range(0, MaxLiquidQuantity);
+        }
+        PlaceLevel(difLevel);
+    }
+ 
+    public void PlaceLevel(int difLevel)
+    {
+        switch (difLevel)
         {
             case 1:
-                level.flasks[0].imgFlask.rectTransform.anchoredPosition = new Vector2(0, 64);
-                level.flasks[0].imgLiquid.rectTransform.anchoredPosition = new Vector2(0, 64);
-                level.flasks[0].imgLiquid.color = liquidColors[Random.Range(0, liquidColors.Length)];
-                level.flasks[0].imgLiquid.fillAmount = level.flasks[0].LiquidQuantity / level.flasks[0].maxLiquidQuantity;
+                flasks[0].imgFlask.rectTransform.anchoredPosition = new Vector2(0, 64);
+                flasks[0].imgLiquid.rectTransform.anchoredPosition = new Vector2(0, 64);
+                flasks[0].imgLiquid.color = liquidColors[Random.Range(0, liquidColors.Length)];
+                flasks[0].imgLiquid.fillAmount = flasks[0].LiquidQuantity / flasks[0].maxLiquidQuantity;
                 break;
 
             case 2:
                 for(int i = 0; i < 2; i++)
                 {
-                    level.flasks[i].imgFlask.rectTransform.anchoredPosition = new Vector2(-128 + 256 * i, 64);
-                    level.flasks[i].imgLiquid.rectTransform.anchoredPosition = new Vector2(-128 + 256 * i, 64);
-                    level.flasks[i].imgLiquid.color = liquidColors[Random.Range(0, liquidColors.Length)];
-                    level.flasks[i].imgLiquid.fillAmount = level.flasks[i].LiquidQuantity / level.flasks[i].maxLiquidQuantity;
+                    flasks[i].imgFlask.rectTransform.anchoredPosition = new Vector2(-128 + 256 * i, 64);
+                    flasks[i].imgLiquid.rectTransform.anchoredPosition = new Vector2(-128 + 256 * i, 64);
+                    flasks[i].imgLiquid.color = liquidColors[Random.Range(0, liquidColors.Length)];
+                    flasks[i].imgLiquid.fillAmount = flasks[i].LiquidQuantity / flasks[i].maxLiquidQuantity;
                 }
                 break;
 
             case 3:
                 for (int i = 0; i < 3; i++)
                 {
-                    level.flasks[i].imgFlask.rectTransform.anchoredPosition = new Vector2(-256 + 256 * i, 64);
-                    level.flasks[i].imgLiquid.rectTransform.anchoredPosition = new Vector2(-256 + 256 * i, 64);
-                    level.flasks[i].imgLiquid.color = liquidColors[Random.Range(0, liquidColors.Length)];
-                    level.flasks[i].imgLiquid.fillAmount = level.flasks[i].LiquidQuantity / level.flasks[i].maxLiquidQuantity;
+                    flasks[i].imgFlask.rectTransform.anchoredPosition = new Vector2(-256 + 256 * i, 64);
+                    flasks[i].imgLiquid.rectTransform.anchoredPosition = new Vector2(-256 + 256 * i, 64);
+                    flasks[i].imgLiquid.color = liquidColors[Random.Range(0, liquidColors.Length)];
+                    flasks[i].imgLiquid.fillAmount = flasks[i].LiquidQuantity / flasks[i].maxLiquidQuantity;
                 }
                 break;
         }
@@ -98,11 +110,9 @@ public class LevelGenerator : MonoBehaviour {
 
         int totalLiquid = 0;
 
-        for (int i = 0; i < level.flasks.Length; i++)
+        for (int i = 0; i < flasks.Length; i++)
         {
-            totalLiquid += level.flasks[i].LiquidQuantity;
+            totalLiquid += flasks[i].LiquidQuantity;
         }
-
-        return level;
     }
 }

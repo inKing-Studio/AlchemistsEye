@@ -15,7 +15,7 @@ using TMPro;
 [CreateAssetMenu(fileName = "Flask", menuName = "AlchemistsEye/New Flask", order = 0)]
 public class Flask : ScriptableObject
 {
-    public Image imgFlask; // Foreground (colors)
+    public Image imgFlask;  // Foreground (colors)
     public Image imgLiquid; // Background (white)
 
     public int maxLiquidQuantity;
@@ -23,6 +23,11 @@ public class Flask : ScriptableObject
     public int LiquidQuantity
     {
         get { return liquidQuantity; }
-        set { liquidQuantity = Random.Range(0, maxLiquidQuantity); }
+        set { liquidQuantity = value; }
+    }
+
+    public void SetLiquidQuantity()
+    {
+        liquidQuantity = Random.Range(0, maxLiquidQuantity);
     }
 }

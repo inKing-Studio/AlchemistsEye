@@ -2,36 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level
+public class Level : MonoBehaviour
 {
-    public Flask[] flasks; // 1 - 3
+    public List<Flask> flasks; // 1 - 3
+
     private int minSliderValue, maxSliderValue;
     public int MinSliderValue
     {
-        get { return minSliderValue; }
-        set { minSliderValue = Mathf.RoundToInt(Random.Range(0f, .25f) * TotalLiquid); }
+        get { return ; }
+        set { minSliderValue = value; }
     }
     public int MaxSliderValue
     {
-        get { return maxSliderValue; }
-        set { maxSliderValue = Mathf.RoundToInt(Random.Range(2.00f, 2.50f) * TotalLiquid); }
+        get { return ; }
+        set { maxSliderValue = value; }
     }
+
     private int totalLiquid;
     public int TotalLiquid
     {
-        get
+        get { return totalLiquid; }
+        set { totalLiquid = value; }
+    }
+
+    public void Awake()
+    {
+        flasks = new List<Flask>();
+    }
+
+    public void CalculateTotalLiquid()
+    {
+        int liquid = 0;
+
+        foreach (Flask flask in flasks)
         {
-            return totalLiquid;
+            flask.LiquidQuantity = Random.Range(0, flask.maxLiquidQuantity);
+            liquid += flask.LiquidQuantity;
         }
-        set
-        {
-            if(totalLiquid <= 0)
-            {
-                foreach (Flask flask in flasks)
-                {
-                    totalLiquid += flask.LiquidQuantity;
-                }
-            }
-        }
+    }
+
+    public void SetSliderValues()
+    {
+        MinSliderValue = Mathf.RoundToInt(Random.Range(0f, .25f) * TotalLiquid);
+        MaxSliderValue = Mathf.RoundToInt(Random.Range(2.00f, 2.50f) * TotalLiquid);
+        guessSlider.value = AverageIntValue(MinSliderValue, MaxSliderValue);
+        guessText.text = guessSlider.value.ToString();
     }
 }
