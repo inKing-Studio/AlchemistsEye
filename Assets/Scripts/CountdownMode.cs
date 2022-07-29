@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CountdownMode : MonoBehaviour {
-    public LevelGenerator levelGenerator;
+    public Level levelGenerator;
     public float counter;
     public int currentPoints;
 
@@ -11,7 +11,6 @@ public class CountdownMode : MonoBehaviour {
     {
         counter = 60;
         currentPoints = 0;
-        levelGenerator.GenerateLevel();
     }
 
     void Update()
@@ -38,6 +37,6 @@ public class CountdownMode : MonoBehaviour {
 
     void SkipLevel()
     {
-        levelGenerator.GenerateLevel();
+        //levelGenerator.GenerateLevel();
     }
 }

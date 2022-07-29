@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e573677ab484f42499975a5f3e9fd499, type: 3}
   m_Name: MediumFlask
   m_EditorClassIdentifier: 
-  imgFlask: {fileID: 0}
-  imgLiquid: {fileID: 0}
+  imgFlask: {fileID: 21300000, guid: 54b146cabde3cc441b936ecdf5d778f9, type: 3}
+  imgLiquid: {fileID: 21300000, guid: 22baa9df1f5cf614687d7f3c8eb1d67b, type: 3}
   maxLiquidQuantity: 400

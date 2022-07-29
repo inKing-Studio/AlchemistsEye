@@ -1,33 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
-
-/* Flask Sizes
-    SMALL,      //  100 mL
-    MEDIUM,     //  400 mL
-    LARGE,      //  700 mL
-    EXTRA_LARGE // 1200 mL
-*/
-
-[CreateAssetMenu(fileName = "Flask", menuName = "AlchemistsEye/New Flask", order = 0)]
-public class Flask : ScriptableObject
+public class Flask : MonoBehaviour
 {
-    public Image imgFlask;  // Foreground (colors)
-    public Image imgLiquid; // Background (white)
+    public FlaskScriptable[] availableFlasks;
 
-    public int maxLiquidQuantity;
-    private int liquidQuantity;
-    public int LiquidQuantity
+    bool set = false;
+    int liquid;
+    int maxLiquid;
+
+    [SerializeField]
+    Image uiFlask;
+    [SerializeField]
+    Image uiLiquid;
+
+    [SerializeField]
+    Color[] liquidColors;
+
+    public int Liquid => liquid;
+    public int MaxLiquid => maxLiquid;
+
+    void Awake()
     {
-        get { return liquidQuantity; }
-        set { liquidQuantity = value; }
+        gameObject.SetActive(false);
     }
 
-    public void SetLiquidQuantity()
+    // Start is called before the first frame update
+    void Start()
     {
-        liquidQuantity = Random.Range(0, maxLiquidQuantity);
+        Setup();
+    }
+
+    public void Setup()
+    {
+        if (set)
+            return;
+
+        var flask = availableFlasks.PickRandom();
+        uiFlask.sprite = flask.imgFlask;
+        uiLiquid.sprite = flask.imgLiquid;
+        maxLiquid = flask.maxLiquidQuantity;
+
+        liquid = Random.Range(0, maxLiquid);
+        uiLiquid.fillAmount = (float)liquid / maxLiquid;
+        uiLiquid.color = liquidColors.PickRandom();
+
+        set = true;
     }
 }

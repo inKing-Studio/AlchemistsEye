@@ -5,14 +5,14 @@ using System.Linq;
 
 public class Stats
 {
-    List<PlayedLevel> levels;
+    List<LevelStatus> levels;
 
-    Stats(List<PlayedLevel> levels)
+    Stats(List<LevelStatus> levels)
     {
         this.levels = levels;
     }
 
-    public int GetCount(Func<PlayedLevel, bool> selector)
+    public int GetCount(Func<LevelStatus, bool> selector)
     {
         return levels.Count(selector);
     }
@@ -32,7 +32,7 @@ public class Stats
 
     public static Stats Load(string path)
     {
-        var list = new List<PlayedLevel>();
+        var list = new List<LevelStatus>();
         using (var bw = new BinaryReader(new FileStream(path, FileMode.OpenOrCreate)))
         {
             byte[] bytes = new byte[6];
@@ -42,7 +42,7 @@ public class Stats
                 var difficulty = (Difficulty)BitConverter.ToInt16(bytes, 2);
                 var mode = (Mode)BitConverter.ToInt16(bytes, 4);
 
-                list.Add(new PlayedLevel(stars, difficulty, mode));
+                list.Add(new LevelStatus(stars, difficulty, mode));
             }
         }
 

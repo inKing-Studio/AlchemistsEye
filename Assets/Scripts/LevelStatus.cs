@@ -1,10 +1,10 @@
-﻿public class PlayedLevel
+﻿public class LevelStatus
 {
     short stars;
     Difficulty difficulty;
     Mode mode;
 
-    public PlayedLevel(short stars, Difficulty difficulty, Mode mode)
+    public LevelStatus(short stars, Difficulty difficulty, Mode mode)
     {
         this.stars = stars;
         this.difficulty = difficulty;

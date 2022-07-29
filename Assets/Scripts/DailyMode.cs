@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DailyMode : MonoBehaviour
 {
-    public LevelGenerator levelGenerator;
+    public Level levelGenerator;
     public float counter;
     public int currentPoints;
 
@@ -12,7 +12,6 @@ public class DailyMode : MonoBehaviour
     {
         counter = 60;
         currentPoints = 0;
-        levelGenerator.GenerateLevel();
     }
 
     void Update()
