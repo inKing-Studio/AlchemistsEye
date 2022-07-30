@@ -981,7 +981,7 @@ GameObject:
   - component: {fileID: 339974529}
   - component: {fileID: 339974528}
   m_Layer: 5
-  m_Name: RegisterButton
+  m_Name: HistoryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2700,7 +2700,7 @@ MonoBehaviour:
   m_text: Daily
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2a900da8b3b0cd44db794dffbdbab6e7, type: 2}
-  m_sharedMaterial: {fileID: 3013630667240847335, guid: f70fcdbbcbcd9bf42adff43ae5d58f0c, type: 2}
+  m_sharedMaterial: {fileID: 8985359592379765697, guid: 2a900da8b3b0cd44db794dffbdbab6e7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2724,7 +2724,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
+  m_fontSize: 10
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3451,7 +3451,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Register
+  m_text: History
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2a900da8b3b0cd44db794dffbdbab6e7, type: 2}
   m_sharedMaterial: {fileID: 8985359592379765697, guid: 2a900da8b3b0cd44db794dffbdbab6e7, type: 2}

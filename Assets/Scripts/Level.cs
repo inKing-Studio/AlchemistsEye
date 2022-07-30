@@ -25,6 +25,7 @@ public class Level : MonoBehaviour {
     int totalLiquid;
 
     void Start() {
+        PlayerPrefs.SetInt("LevelDifficulty", 3);
         minSliderValue = 0;
         maxSliderValue = 0;
         totalLiquid = 0;
@@ -53,15 +54,15 @@ public class Level : MonoBehaviour {
     }
 
     public void OnGuessButtonClicked() {
-        if (guessSlider.value >= totalLiquid * .9f || guessSlider.value <= totalLiquid * 1.1f)
+        if (guessSlider.value >= totalLiquid * .9f && guessSlider.value <= totalLiquid * 1.1f)
         {
             levelStars = 3;
         }
-        else if(guessSlider.value > totalLiquid * .7f || guessSlider.value < totalLiquid * 1.3f)
+        else if(guessSlider.value > totalLiquid * .7f && guessSlider.value < totalLiquid * 1.3f && guessSlider.value <= totalLiquid * .9f && guessSlider.value >= totalLiquid * 1.1f)
         {
             levelStars = 2;
         }
-        else if(guessSlider.value > totalLiquid * .5f || guessSlider.value < totalLiquid * 1.5f)
+        else if(guessSlider.value > totalLiquid * .5f && guessSlider.value < totalLiquid * 1.5f && guessSlider.value < totalLiquid * .7f && guessSlider.value > totalLiquid * 1.3f)
         {
             levelStars = 1;
         }

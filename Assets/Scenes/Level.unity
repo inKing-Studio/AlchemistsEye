@@ -354,11 +354,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 100
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -925,14 +925,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1157536555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ecc23332d8bc674d984f9138cfc657c, type: 3}
+  m_Script: {fileID: 11500000, guid: d7c7c42140e79a94faa9f98b4fc85369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableFlasks:
-  - {fileID: 11400000, guid: af165eb8f609b0b4bab2810039b1fdc1, type: 2}
-  - {fileID: 11400000, guid: 0ead758c6e7e896448a01cb6991a6ad0, type: 2}
-  - {fileID: 11400000, guid: 252402144365a4d42b8d8cd9130b3622, type: 2}
-  - {fileID: 11400000, guid: ba7248aa86cbf594ea38ec4fd05b72da, type: 2}
+  availableFlasks: []
   guessSlider: {fileID: 721309697}
   guessButton: {fileID: 709233007}
   guessText: {fileID: 1808032321}
@@ -942,8 +938,8 @@ MonoBehaviour:
   - {fileID: 1422333153}
   - {fileID: 1983242398}
   minSliderValue: 0
-  maxSliderValue: 100
-  totalLiquid: 50
+  maxSliderValue: 0
+  totalLiquid: 0
 --- !u!4 &1157536557
 Transform:
   m_ObjectHideFlags: 0
@@ -1421,9 +1417,9 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 720, y: 1280}
+  m_ReferenceResolution: {x: 216, y: 384}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
