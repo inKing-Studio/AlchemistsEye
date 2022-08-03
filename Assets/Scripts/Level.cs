@@ -8,9 +8,6 @@ using System.Linq;
 
 public class Level : MonoBehaviour {
 
-    [SerializeField]
-    FlaskScriptable[] availableFlasks;
-
     // GUI
     public Slider guessSlider;
     public Button guessButton;
@@ -25,13 +22,13 @@ public class Level : MonoBehaviour {
     int totalLiquid;
 
     void Start() {
-        PlayerPrefs.SetInt("LevelDifficulty", 3);
+
         minSliderValue = 0;
         maxSliderValue = 0;
         totalLiquid = 0;
 
-        int difLevel = PlayerPrefs.GetInt("LevelDifficulty");
-        Debug.Log(difLevel);
+        int difLevel = Prefs.Difficulty;
+
         for (int i = 0; i < difLevel && i < uiFlasks.Length; i++)
         {
             uiFlasks[i].gameObject.SetActive(true);
@@ -54,15 +51,17 @@ public class Level : MonoBehaviour {
     }
 
     public void OnGuessButtonClicked() {
-        if (guessSlider.value >= totalLiquid * .9f && guessSlider.value <= totalLiquid * 1.1f)
+        float relativeDifference = Mathf.Abs(guessSlider.value - totalLiquid) / maxSliderValue;
+        Debug.Log(relativeDifference);
+        if (relativeDifference < .08f)
         {
             levelStars = 3;
         }
-        else if(guessSlider.value > totalLiquid * .7f && guessSlider.value < totalLiquid * 1.3f && guessSlider.value <= totalLiquid * .9f && guessSlider.value >= totalLiquid * 1.1f)
+        else if(relativeDifference < .12f)
         {
             levelStars = 2;
         }
-        else if(guessSlider.value > totalLiquid * .5f && guessSlider.value < totalLiquid * 1.5f && guessSlider.value < totalLiquid * .7f && guessSlider.value > totalLiquid * 1.3f)
+        else if(relativeDifference < .25f)
         {
             levelStars = 1;
         }

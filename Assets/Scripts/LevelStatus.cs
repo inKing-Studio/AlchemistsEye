@@ -25,6 +25,6 @@ public enum Mode
 public enum Difficulty
 {
     Easy,
-    Medium,
+    Normal,
     Hard
 }

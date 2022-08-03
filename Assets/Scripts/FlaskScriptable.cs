@@ -18,6 +18,8 @@ public class FlaskScriptable : ScriptableObject
     public Sprite imgFlask;  // Foreground (colors)
     public Sprite imgLiquid; // Background (white)
 
+    public AnimationCurve fillCurve;
+
     public int maxLiquidQuantity;
 
 }

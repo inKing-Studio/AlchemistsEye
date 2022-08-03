@@ -52,26 +52,26 @@ public class Stats
     public int Count => levels.Count;
 
     public int DailyEasyOneStar => GetCount(level => level.Mode == Mode.Daily && level.Difficulty == Difficulty.Easy && level.Stars == 1);
-    public int DailyMediumOneStar => GetCount(level => level.Mode == Mode.Daily && level.Difficulty == Difficulty.Medium && level.Stars == 1);
+    public int DailyMediumOneStar => GetCount(level => level.Mode == Mode.Daily && level.Difficulty == Difficulty.Normal && level.Stars == 1);
     public int DailyHardOneStar => GetCount(level => level.Mode == Mode.Daily && level.Difficulty == Difficulty.Hard && level.Stars == 1);
 
     public int DailyEasyTwoStar => GetCount(level => level.Mode == Mode.Daily && level.Difficulty == Difficulty.Easy && level.Stars == 2);
-    public int DailyMediumTwoStar => GetCount(level => level.Mode == Mode.Daily && level.Difficulty == Difficulty.Medium && level.Stars == 2);
+    public int DailyMediumTwoStar => GetCount(level => level.Mode == Mode.Daily && level.Difficulty == Difficulty.Normal && level.Stars == 2);
     public int DailyHardTwoStar => GetCount(level => level.Mode == Mode.Daily && level.Difficulty == Difficulty.Hard && level.Stars == 2);
 
     public int DailyEasyThreeStar => GetCount(level => level.Mode == Mode.Daily && level.Difficulty == Difficulty.Easy && level.Stars == 3);
-    public int DailyMediumThreeStar => GetCount(level => level.Mode == Mode.Daily && level.Difficulty == Difficulty.Medium && level.Stars == 3);
+    public int DailyMediumThreeStar => GetCount(level => level.Mode == Mode.Daily && level.Difficulty == Difficulty.Normal && level.Stars == 3);
     public int DailyHardThreeStar => GetCount(level => level.Mode == Mode.Daily && level.Difficulty == Difficulty.Hard && level.Stars == 3);
 
     public int CountdownEasyOneStar => GetCount(level => level.Mode == Mode.Countdown && level.Difficulty == Difficulty.Easy && level.Stars == 1);
-    public int CountdownMediumOneStar => GetCount(level => level.Mode == Mode.Countdown && level.Difficulty == Difficulty.Medium && level.Stars == 1);
+    public int CountdownMediumOneStar => GetCount(level => level.Mode == Mode.Countdown && level.Difficulty == Difficulty.Normal && level.Stars == 1);
     public int CountdownHardOneStar => GetCount(level => level.Mode == Mode.Countdown && level.Difficulty == Difficulty.Hard && level.Stars == 1);
 
     public int CountdownEasyTwoStar => GetCount(level => level.Mode == Mode.Countdown && level.Difficulty == Difficulty.Easy && level.Stars == 2);
-    public int CountdownMediumTwoStar => GetCount(level => level.Mode == Mode.Countdown && level.Difficulty == Difficulty.Medium && level.Stars == 2);
+    public int CountdownMediumTwoStar => GetCount(level => level.Mode == Mode.Countdown && level.Difficulty == Difficulty.Normal && level.Stars == 2);
     public int CountdownHardTwoStar => GetCount(level => level.Mode == Mode.Countdown && level.Difficulty == Difficulty.Hard && level.Stars == 2);
 
     public int CountdownEasyThreeStar => GetCount(level => level.Mode == Mode.Countdown && level.Difficulty == Difficulty.Easy && level.Stars == 3);
-    public int CountdownMediumThreeStar => GetCount(level => level.Mode == Mode.Countdown && level.Difficulty == Difficulty.Medium && level.Stars == 3);
+    public int CountdownMediumThreeStar => GetCount(level => level.Mode == Mode.Countdown && level.Difficulty == Difficulty.Normal && level.Stars == 3);
     public int CountdownHardThreeStar => GetCount(level => level.Mode == Mode.Countdown && level.Difficulty == Difficulty.Hard && level.Stars == 3);
 }

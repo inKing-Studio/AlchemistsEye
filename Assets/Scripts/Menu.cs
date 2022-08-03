@@ -9,9 +9,8 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-    TMP_Dropdown dropdown;
-    public Mode mode;
-    //LevelInfo info;
+    [SerializeField]
+    TMP_Dropdown ddMode, ddDifficulty;
 
     //void Awake()
     //{
@@ -21,11 +20,16 @@ public class Menu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dropdown = FindObjectOfType<TMP_Dropdown>();
         //info = FindObjectOfType<LevelInfo>();
 
-        dropdown.ClearOptions();
-        dropdown.AddOptions(Enum.GetNames(typeof(Mode)).ToList());
+        ddMode.ClearOptions();
+        ddMode.AddOptions(Enum.GetNames(typeof(Mode)).ToList());
+
+        ddDifficulty.ClearOptions();
+        ddDifficulty.AddOptions(Enum.GetNames(typeof(Difficulty)).ToList());
+
+        ddMode.value = Prefs.Mode;
+        ddDifficulty.value = Prefs.Difficulty;
 
         //menuScene = SceneManager.GetActiveScene();
         SceneManager.sceneLoaded += sceneLoaded;
@@ -40,22 +44,16 @@ public class Menu : MonoBehaviour
         //throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Play()
     {
-        //info.mode = mode;
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
     }
 
     public void ChangeMode()
     {
-        Debug.Log(dropdown.value);
-        mode = (Mode)dropdown.value;
+        Prefs.Mode = ddMode.value;
+        Prefs.Difficulty = ddDifficulty.value;
+        Prefs.Save();
     }
 }
 
